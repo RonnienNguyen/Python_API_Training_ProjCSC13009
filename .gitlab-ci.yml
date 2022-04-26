@@ -1,0 +1,14 @@
+image: python:latest
+before_script:
+  - python -V  # Print out python version for debugging
+
+stages:
+ - format
+
+format-black:
+  stage: format
+  image:
+    name: cytopia/black
+    entrypoint: ["/bin/ash", "-c"]
+  script:
+    - python -m black --check --diff .
